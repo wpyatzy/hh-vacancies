@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  back:
+    image: mysql
+    container_name: mysql
+    environment:
+      MYSQL_HOST: sql7.freesqldatabase.com
+      MYSQL_DATABASE: sql7716507
+      MYSQL_USER: rsql7716507
+      MYSQL_PASSWORD: 7CJfhNYBmG
+      MYSQL_ROOT_PASSWORD: 7CJfhNYBmG
+    ports:
+      - "80:8000"
+
+  app:
+    build: .
+    container_name: node_app
+    ports: 
+      - "3000:3000"
+    
