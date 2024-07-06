@@ -2,22 +2,22 @@ import requests
 import mysql.connector
 
 db = mysql.connector.connect(host="sql7.freesqldatabase.com",
-                           user="sql7716507",
-                           password="7CJfhNYBmG",
-                           database="sql7716507",
+                           user="sql7718093",
+                           password="QM2Gu1FjSb",
+                           database="sql7718093",
                            port=3306,
                            autocommit=True)
 cursor = db.cursor(dictionary=True)
-'''
+
 cursor.execute("""TRUNCATE vacancies""")
 cursor.execute("""TRUNCATE req""")
 cursor.execute("""TRUNCATE desq""")
 cursor.execute("""TRUNCATE salary""")
 print('Database cleared')
-'''
+
 url_v = 'https://api.hh.ru/vacancies'
 a=0
-for page in range(1): #установить значение страниц
+for page in range(5):
     params = {
         'per_page': 25,
         'page': page

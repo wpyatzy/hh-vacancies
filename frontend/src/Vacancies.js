@@ -2,15 +2,6 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
 
-async function saveVacancyToDB(vacancy) {
-  try {
-    await axios.post('https://api.hh.ru/vacancies', vacancy);
-    console.log('Vacancy saved');
-  } catch (error) {
-    console.log('Error saving vacancy:', error);
-  }
-}
-
 const Vacancies = () => {
   const [vacancies, setVacancies] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -20,7 +11,7 @@ const Vacancies = () => {
   const [totalFound, setTotalFound] = useState(0);
 
   useEffect(() => {
-    fetchVacancies('python', 0);
+    fetchVacancies('cd ', 0);
   }, []);
   
   const fetchVacancies = async (query, page) => {
@@ -37,7 +28,6 @@ const Vacancies = () => {
       });
       setVacancies(response.data.items);
       setTotalFound(response.data.found);
-      response.data.items.forEach(saveVacancyToDB);
     } catch (error) {
       setError(error);
     } finally {
